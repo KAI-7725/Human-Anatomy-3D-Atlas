@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Human Anatomy - Holographic Focus Mode</title>
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en" onclick="cancelFocus(event)">
+
+    <!-- Quiz Overlay Panel -->
+    <div id="quiz-overlay" onclick="event.stopPropagation()">
+        <div class="quiz-card">
+            <h2 id="quiz-question">Question Text Goes Here?</h2>
+            <div class="quiz-options-container" id="quiz-options"></div>
+            <button class="quiz-close-btn" id="quiz-close" onclick="closeQuiz()">CLOSE QUIZ</button>
+        </div>
+    </div>
+
+    <header>
+        <h1 id="header-title">HUMAN ANATOMY 3D ATLAS</h1>
+        <p id="header-subtitle">3D POP-UP FOCUS // Click Organs to Zoom or Click Empty Space to Cancel</p>
+        
+        <button id="lang-btn" class="lang-toggle-btn" onclick="event.stopPropagation(); toggleLanguage()">EN</button>
+    </header>
+
+    <div class="main-container">
+        <!-- Left Sidebar Menu -->
+        <div class="sidebar" onclick="event.stopPropagation()">
+            <h3 id="sidebar-title">ANATOMY TARGETS</h3>
+            <div id="organs-menu"></div>
+        </div>
+
+        <!-- Center 3D Theatre -->
+        <div class="viewport-area">
+            <div class="image-container" id="img-container" onclick="event.stopPropagation()">
+                <img id="anatomy-img" src="anatomy.jpg" alt="3D Human Anatomy">
+                
+                <div class="target-reticle" id="reticle"></div>
+
+                <!-- Invisible Clickable Zones -->
+                <div class="hotspot-zone" style="top: 3%; left: 35%; width: 26%; height: 14%;" onclick="focusOrgan('brain')"></div>
+                <div class="hotspot-zone" style="top: 24%; left: 45%; width: 10%; height: 6%;" onclick="focusOrgan('thyroid')"></div>
+                <div class="hotspot-zone" style="top: 37%; left: 44%; width: 14%; height: 13%;" onclick="focusOrgan('heart')"></div>
+                <div class="hotspot-zone" style="top: 33%; left: 23%; width: 19%; height: 21%;" onclick="focusOrgan('lung_r')"></div>
+                <div class="hotspot-zone" style="top: 33%; left: 59%; width: 19%; height: 21%;" onclick="focusOrgan('lung_l')"></div>
+                <div class="hotspot-zone" style="top: 53%; left: 26%; width: 23%; height: 12%;" onclick="focusOrgan('liver')"></div>
+                <div class="hotspot-zone" style="top: 54%; left: 50%; width: 19%; height: 11%;" onclick="focusOrgan('stomach')"></div>
+                <div class="hotspot-zone" style="top: 64%; left: 29%; width: 12%; height: 8%;" onclick="focusOrgan('kidney_r')"></div>
+                <div class="hotspot-zone" style="top: 64%; left: 59%; width: 12%; height: 8%;" onclick="focusOrgan('kidney_l')"></div>
+                <div class="hotspot-zone" style="top: 68%; left: 25%; width: 50%; height: 18%;" onclick="focusOrgan('l_intestine')"></div>
+                <div class="hotspot-zone" style="top: 73%; left: 32%; width: 36%; height: 12%;" onclick="focusOrgan('s_intestine')"></div>
+            </div>
+            <div id="controls-hint" class="controls-hint">CLICK ORGAN TO ZOOM // CLICK OUTSIDE TO CANCEL</div>
+        </div>
+
+        <!-- Right Text Info Panel -->
+        <div class="info-panel" onclick="event.stopPropagation()">
+            <div class="details-box">
+                <h2 id="display-name">Body Systems</h2>
+                <span id="display-system" class="system-tag">SYSTEM READY</span>
+                <p id="display-func" style="margin-top: 1.2rem;">Click directly on any organ to activate the 3D pop-up focus mode for detailed study.</p>
+                
+                <button id="quiz-trigger" class="quiz-trigger-btn" onclick="startQuiz()">TAKE ORGAN QUIZ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript File Link -->
+    <script src="script.js"></script>
+</body>
+</html>
